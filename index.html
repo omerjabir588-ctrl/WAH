@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#061421">
+  <meta name="description" content="Workout at Home — no gym, no excuses.">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="style.css">
+  <title>Workout at Home</title>
+</head>
+<body>
+  <div class="app-shell">
+    <section class="screen splash" id="welcome">
+      <div class="brand-mark" aria-hidden="true"><svg viewBox="0 0 120 100"><path d="M10 39 60 5 110 39" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 38v48M98 38v48" stroke="currentColor" stroke-width="7" stroke-linecap="round"/><circle cx="60" cy="38" r="10" fill="currentColor"/><path d="M47 54c-7-3-13 1-15 8l-4 13m45-21c7-3 13 1 15 8l4 13M49 54l-7 17 18 9 18-9-7-17M42 71l-9 18m45-18 9 18M60 48v29" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <h1>Workout<br><span>at Home</span></h1>
+      <p class="tagline">No Gym · No Excuses</p>
+      <p class="muted intro">Get fit, stay healthy,<br>right from your home.</p>
+      <button class="primary welcome-btn" id="getStarted">Get Started <span>›</span></button>
+    </section>
+
+    <main class="screen app-screen hidden" id="mainApp">
+      <header class="topbar"><div><small class="eyebrow">YOUR DAILY ROUTINE</small><h2 id="pageTitle">Workout <span>at Home</span></h2></div><button class="icon-btn" id="settingsBtn" aria-label="Settings">⚙</button></header>
+
+      <section class="page active" id="homePage">
+        <div class="hero-card">
+          <div class="hero-copy"><h2>Stronger<br>Every Day</h2><p>Small steps make<br>big results.</p><button class="primary" id="heroStart">Start Workout <span>▶</span></button></div>
+          <div class="hero-visual"><span class="figure">🏋️</span><span class="glow"></span></div>
+        </div>
+        <div class="section-heading"><h3>Categories</h3><span class="muted">Choose your focus</span></div>
+        <div class="category-grid">
+          <button class="category" data-filter="Full Body"><span>🧘</span><b>Full Body</b><small>12 Workouts</small></button>
+          <button class="category" data-filter="Upper Body"><span>🏋️</span><b>Upper Body</b><small>10 Workouts</small></button>
+          <button class="category" data-filter="Lower Body"><span>🏃</span><b>Lower Body</b><small>10 Workouts</small></button>
+          <button class="category" data-filter="Abs & Core"><span>💪</span><b>Abs &amp; Core</b><small>8 Workouts</small></button>
+        </div>
+        <div class="section-heading"><h3>Popular today</h3><button class="text-btn" data-page="workoutsPage">See all</button></div>
+        <div id="homeWorkouts" class="mini-list"></div>
+      </section>
+
+      <section class="page hidden" id="workoutsPage">
+        <div class="filter-row"><button class="chip selected" data-filter="All">All</button><button class="chip" data-filter="Full Body">Full Body</button><button class="chip" data-filter="Upper Body">Upper Body</button><button class="chip" data-filter="Lower Body">Lower Body</button><button class="chip" data-filter="Abs & Core">Abs &amp; Core</button></div>
+        <div id="workoutList" class="workout-list"></div>
+      </section>
+
+      <section class="page hidden" id="detailPage">
+        <button class="back-btn" id="backToList">‹ &nbsp; Workouts</button>
+        <div class="detail-photo" id="detailPhoto">🏋️</div>
+        <h2 id="detailName">Full Body Workout</h2>
+        <div class="meta">◷ <span id="detailDuration">20 min</span> · <span id="detailLevel">Beginner</span></div>
+        <p class="muted" id="detailDesc">A complete workout for your whole body. No equipment needed. Just your body weight and motivation!</p>
+        <button class="primary full-width" id="detailStart">▶ &nbsp; Start Workout</button>
+        <h3 class="exercise-title">Exercises <span id="exerciseCount">(10)</span></h3>
+        <div id="exerciseList" class="exercise-list"></div>
+      </section>
+
+      <section class="page hidden" id="sessionPage">
+        <div class="session-top"><button class="back-btn" id="quitSession">‹ Exit</button><span id="sessionCount">1 / 5</span></div>
+        <div class="progress-line"><span id="sessionProgress"></span></div>
+        <div class="timer-ring"><div><strong id="timer">45</strong><small>seconds</small></div></div>
+        <h2 id="currentExercise">Jumping Jacks</h2><p class="muted">Next: <span id="nextExercise">Squats</span></p>
+        <div class="session-controls"><button class="round-btn" id="previousExercise">‹</button><button class="pause-btn" id="pauseTimer">Ⅱ</button><button class="round-btn" id="nextExerciseBtn">›</button></div>
+      </section>
+
+      <section class="page hidden" id="progressPage">
+        <h2 class="page-heading">Progress</h2>
+        <div class="filter-row"><button class="chip selected">Weekly</button><button class="chip">Monthly</button><button class="chip">All Time</button></div>
+        <div class="stat-card"><div class="stat-label">◷ &nbsp; Workouts Completed</div><div class="stat-big">🔥 <span id="completedCount">0</span></div><p class="muted">workouts completed on this device</p><div class="bar-chart" id="barChart"></div><div class="week-labels"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div></div>
+        <div class="stat-card"><div class="stat-label">◷ &nbsp; Total Time</div><div class="stat-big">◷ <span id="totalTime">0 min</span></div><p class="muted">time spent working out</p></div>
+        <div class="stat-card"><div class="stat-label">♨ &nbsp; Calories Burned</div><div class="stat-big">🔥 <span id="calories">0</span></div><p class="muted">estimated calories burned</p></div>
+        <button class="secondary full-width" id="resetProgress">Reset progress</button>
+      </section>
+
+      <section class="page hidden" id="profilePage">
+        <h2 class="page-heading">Profile</h2>
+        <div class="profile-head"><div class="avatar">☺</div><div><h3 id="profileName">Omar</h3><p class="muted">Stay consistent 💪</p></div><button class="icon-btn" id="editName">✎</button></div>
+        <div class="profile-stats"><div><b id="profileWorkouts">0</b><small>Workouts</small></div><div><b id="profileTime">0 min</b><small>Total Time</small></div><div><b id="profileCalories">0</b><small>Calories</small></div></div>
+        <div class="menu-card"><button id="goGoals">◎ <span><b>My Goals</b><small>Get stronger</small></span><i>›</i></button><button id="settingsMenu">⚙ <span><b>Settings</b><small>Personalize your app</small></span><i>›</i></button><button id="helpBtn">ⓘ <span><b>Help &amp; Support</b><small>Workout tips</small></span><i>›</i></button><button id="aboutBtn">● <span><b>About App</b><small>Workout at Home</small></span><i>›</i></button></div>
+      </section>
+
+      <nav class="bottom-nav">
+        <button class="nav-item active" data-page="homePage"><span>⌂</span><small>Home</small></button>
+        <button class="nav-item" data-page="workoutsPage"><span>♧</span><small>Workouts</small></button>
+        <button class="nav-item" data-page="progressPage"><span>▥</span><small>Progress</small></button>
+        <button class="nav-item" data-page="profilePage"><span>♙</span><small>Profile</small></button>
+      </nav>
+    </main>
+    <div class="toast" id="toast" role="status"></div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
